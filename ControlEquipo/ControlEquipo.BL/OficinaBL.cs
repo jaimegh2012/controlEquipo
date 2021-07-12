@@ -25,7 +25,7 @@ namespace ControlEquipo.BL
 
         public Oficina obtenerOficina(int id)
         {
-            var oficina = _contexto.Oficinas.Find(id);
+            var oficina = _contexto.Oficinas.Include("Empresa").Include("Ciudad").FirstOrDefault(a => a.Id == id);
             return oficina;
         }
 
