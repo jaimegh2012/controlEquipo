@@ -1,0 +1,39 @@
+﻿@model ControlEquipo.BL.Area
+
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<h2>Area: @Model.Nombre</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponible)
+        </dd>
+
+        
+    </dl>
+    
+
+    
+</div>
+
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
+

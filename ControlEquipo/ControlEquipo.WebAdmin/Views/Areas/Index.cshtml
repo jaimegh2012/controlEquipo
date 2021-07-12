@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ControlEquipo.BL.Area>
+
+@{
+    ViewBag.Title = "Areas";
+}
+
+<h2>Areas</h2>
+
+<p>
+    @Html.ActionLink("Nueva Area", "Crear")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disponible)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
+            @Html.ActionLink("Detalle", "Detalle", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
