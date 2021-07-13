@@ -167,6 +167,8 @@
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OficinasController.cs" />
+    <Compile Include="Controllers\ProcesadoresController.cs" />
+    <Compile Include="Controllers\TipoMemoriasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,6 +191,12 @@
     <Content Include="Views\Empleados\Crear.cshtml" />
     <Content Include="Views\Empleados\Editar.cshtml" />
     <Content Include="Views\Empleados\Detalle.cshtml" />
+    <Content Include="Views\Procesadores\Index.cshtml" />
+    <Content Include="Views\Procesadores\Crear.cshtml" />
+    <Content Include="Views\Procesadores\Editar.cshtml" />
+    <Content Include="Views\TipoMemorias\Index.cshtml" />
+    <Content Include="Views\TipoMemorias\Crear.cshtml" />
+    <Content Include="Views\TipoMemorias\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -200,6 +208,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Empresa\" />
+    <Folder Include="Views\Procesador\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ControlEquipo.BL\ControlEquipo.BL.csproj">

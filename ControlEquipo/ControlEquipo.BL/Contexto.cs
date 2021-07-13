@@ -20,6 +20,7 @@ namespace ControlEquipo.BL
         public DbSet<Oficina> Oficinas { get; set; }
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Ciudad> Ciudades { get; set; }
-
+        public DbSet<Procesador> Procesadores { get; set; }
+        public DbSet<TipoMemoria> TipoMemorias { get; set; }
     }
 }

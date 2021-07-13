@@ -56,6 +56,7 @@
     <Compile Include="AreaBL.cs" />
     <Compile Include="Ciudad.cs" />
     <Compile Include="CiudadBL.cs" />
+    <Compile Include="Computadora.cs" />
     <Compile Include="Contexto.cs" />
     <Compile Include="Empleado.cs" />
     <Compile Include="EmpleadoBL.cs" />
@@ -63,7 +64,11 @@
     <Compile Include="EmpresaBL.cs" />
     <Compile Include="Oficina.cs" />
     <Compile Include="OficinaBL.cs" />
+    <Compile Include="Procesador.cs" />
+    <Compile Include="ProcesadorBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoMemoria.cs" />
+    <Compile Include="TipoMemoriaBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

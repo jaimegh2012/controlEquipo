@@ -44,12 +44,5 @@ namespace ControlEquipo.BL
             _contexto.SaveChanges();
         }
 
-        public void eliminarSeccion(int id)
-        {
-            var area = _contexto.Areas.Find(id);
-
-            _contexto.Areas.Remove(area);
-            _contexto.SaveChanges();
-        }
     }
 }
