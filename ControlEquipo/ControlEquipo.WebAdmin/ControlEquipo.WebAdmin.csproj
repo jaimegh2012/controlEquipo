@@ -163,9 +163,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AreasController.cs" />
     <Compile Include="Controllers\CiudadesController.cs" />
+    <Compile Include="Controllers\ComputadorasController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\OficinasController.cs" />
     <Compile Include="Controllers\ProcesadoresController.cs" />
     <Compile Include="Controllers\TipoMemoriasController.cs" />
@@ -197,6 +199,12 @@
     <Content Include="Views\TipoMemorias\Index.cshtml" />
     <Content Include="Views\TipoMemorias\Crear.cshtml" />
     <Content Include="Views\TipoMemorias\Editar.cshtml" />
+    <Content Include="Views\Marcas\Index.cshtml" />
+    <Content Include="Views\Marcas\Crear.cshtml" />
+    <Content Include="Views\Marcas\Editar.cshtml" />
+    <Content Include="Views\Computadoras\Crear.cshtml" />
+    <Content Include="Views\Computadoras\Index.cshtml" />
+    <Content Include="Views\Empleados\ComputadorasAsignadas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

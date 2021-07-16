@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ControlEquipo.BL.Computadora>
+
+@{
+    ViewBag.Title = "ComputadorasAsignadas";
+}
+
+<h2>ComputadorasAsignadas</h2>
+
+<p>
+    @Html.ActionLink("Nueva Computadora", "Crear", "Computadoras")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoComputadora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hostname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DirecionIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaUltimaActualiacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoComputadora.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hostname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DirecionIP)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaUltimaActualiacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponible)
+            </td>
+
+            <td>
+                @Html.ActionLink("Editar", "Editar", "Computadoras", new { id = item.Id }, null) |
+                @Html.ActionLink("Detalle", "Detalle", "Computadoras", new { id = item.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>

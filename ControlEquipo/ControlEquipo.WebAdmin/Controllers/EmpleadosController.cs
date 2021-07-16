@@ -12,6 +12,7 @@ namespace ControlEquipo.WebAdmin.Controllers
         EmpleadoBL _empleadoBL;
         AreaBL _areaBL;
         OficinaBL _oficinaBL;
+        ComputadoraBL _computadoraBL;
 
         List<Empleado> listaEmpleados;
 
@@ -20,6 +21,7 @@ namespace ControlEquipo.WebAdmin.Controllers
             _empleadoBL = new EmpleadoBL();
             _areaBL = new AreaBL();
             _oficinaBL = new OficinaBL();
+            _computadoraBL = new ComputadoraBL();
             listaEmpleados = new List<Empleado>();
         }
 
@@ -28,6 +30,12 @@ namespace ControlEquipo.WebAdmin.Controllers
         {
             listaEmpleados = _empleadoBL.obtenerEmpleados();
             return View(listaEmpleados);
+        }
+
+        public ActionResult ComputadorasAsignadas(int id)
+        {
+            var listaComputadoras = _computadoraBL.obtenerComputadorasPorEmpleado(id);
+            return View(listaComputadoras);
         }
 
         public ActionResult Crear()

@@ -15,24 +15,44 @@ namespace ControlEquipo.BL
         }
 
         public int Id { get; set; }
-        public string TipoComputadora { get; set; }
+        public string TipoComputadoraId { get; set; }
+        public TipoComputadora TipoComputadora { get; set; }
         public string Hostname { get; set; }
         public string DirecionIP { get; set; }
         public string Serie { get; set; }
-        public string MarcaId { get; set; }
+        public int MarcaId { get; set; }
+        public Marca Marca { get; set; }
         public string Modelo { get; set; }
         public int ProcesadorId { get; set; }
         public Procesador Procesador { get; set; }
         public int GeneracionProcesador { get; set; }
         public int TipoMemoriaId { get; set; }
         public TipoMemoria TipoMemoria { get; set; }
+        public int Memoria { get; set; }
         public int CapacidadAlmacenamiento { get; set; }
-        public string TipoDisco { get; set; }
+        public string TipoDiscoId { get; set; }
+        public TipoDisco TipoDisco { get; set; }
         public string OtraInformacion { get; set; }
         public string Observaciones { get; set; }
         public DateTime FechaUltimaActualiacion { get; set; }
         public bool Disponible { get; set; }
         public int EmpleadoId { get; set; }
         public Empleado Empleado { get; set; }
+
+        public List<ComputadoraDetalle> ListaAccesorios { get; set; }
+    }
+
+    public class ComputadoraDetalle
+    {
+        public ComputadoraDetalle()
+        {
+
+        }
+
+        public int Id { get; set; }
+        public int AccesorioId { get; set; }
+        public int ComputadoraId { get; set; }
+        public Computadora Computadora { get; set; }
+
     }
 }
