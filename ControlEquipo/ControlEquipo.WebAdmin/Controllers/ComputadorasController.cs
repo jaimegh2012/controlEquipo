@@ -42,7 +42,7 @@ namespace ControlEquipo.WebAdmin.Controllers
             return View(listaComputadoras);
         }
 
-        public ActionResult Crear()
+        public ActionResult Crear(int empleadoId)
         {
             var nuevaComputadora = new Computadora();
             var marcas = _marcaBL.obtenerMarcas();
@@ -50,14 +50,18 @@ namespace ControlEquipo.WebAdmin.Controllers
             var tiposMemorias = _tipoMemoriaBL.obtenerTipoMemorias();
             var tipoComputadoras = _tipoComputadoraBL.obtenerTipoComputadoras();
             var tipoDiscos = _tipoDiscoBL.obtenerTipoDiscos();
-            var empleados = _empleadoBL.obtenerEmpleados();
+            
 
             ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre");
             ViewBag.ProcesadorId = new SelectList(Procesadores, "Id", "Nombre");
             ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre");
             ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre");
             ViewBag.TipoDiscoId = new SelectList(tipoDiscos, "Id", "Nombre");
-            ViewBag.EmpleadoId = new SelectList(empleados, "Id", "Nombres");
+
+            //consultar el empleado y asignarselo al objeto de tipo computadora, para utilizarlo en la vista
+            var Empleado = _empleadoBL.obtenerEmpleado(empleadoId);
+            nuevaComputadora.EmpleadoId = empleadoId;
+            nuevaComputadora.Empleado = Empleado;
 
             return View(nuevaComputadora);
         }
@@ -102,7 +106,7 @@ namespace ControlEquipo.WebAdmin.Controllers
                 }
 
                 _computadoraBL.guardarComputadora(computadora);
-                return RedirectToAction("Index");
+                return RedirectToAction("ComputadorasAsignadas", "Empleados", new {empleadoId = computadora.EmpleadoId});
             }
 
             ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre");
@@ -115,61 +119,93 @@ namespace ControlEquipo.WebAdmin.Controllers
         }
 
 
-        /*public ActionResult Editar(int id)
+        public ActionResult Editar(int id)
         {
-            var oficina = _oficinaBL.obtenerOficina(id);
-            var empresas = _empresaBL.obtenerEmpresas();
-            var ciudades = _ciudadBL.obtenerCiudades();
+            var computadora = _computadoraBL.obtenerComputadora(id);
+            var marcas = _marcaBL.obtenerMarcas();
+            var Procesadores = _procesadorBL.obtenerProcesadores();
+            var tiposMemorias = _tipoMemoriaBL.obtenerTipoMemorias();
+            var tipoComputadoras = _tipoComputadoraBL.obtenerTipoComputadoras();
+            var tipoDiscos = _tipoDiscoBL.obtenerTipoDiscos();
+            var empleados = _empleadoBL.obtenerEmpleados();
 
-            ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre", oficina.EmpresaId);
-            ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre", oficina.CiudadId);
 
-            return View(oficina);
+            ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);
+            ViewBag.ProcesadorId = new SelectList(Procesadores, "Id", "Nombre", computadora.ProcesadorId);
+            ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre", computadora.TipoMemoriaId);
+            ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);
+            ViewBag.TipoDiscoId = new SelectList(tipoDiscos, "Id", "Nombre", computadora.TipoDiscoId);
+            ViewBag.EmpleadoId = new SelectList(empleados, "Id", "Nombres", computadora.EmpleadoId);
+            return View(computadora);
         }
 
         [HttpPost]
-        public ActionResult Editar(Oficina oficina)
+        public ActionResult Editar(Computadora computadora)
         {
-            var empresas = _empresaBL.obtenerEmpresas();
-            var ciudades = _ciudadBL.obtenerCiudades();
+            var marcas = _marcaBL.obtenerMarcas();
+            var Procesadores = _procesadorBL.obtenerProcesadores();
+            var tiposMemorias = _tipoMemoriaBL.obtenerTipoMemorias();
+            var tipoComputadoras = _tipoComputadoraBL.obtenerTipoComputadoras();
+            var tipoDiscos = _tipoDiscoBL.obtenerTipoDiscos();
+            var empleados = _empleadoBL.obtenerEmpleados();
+
 
             if (ModelState.IsValid)
             {
-                if (oficina.Nombre != oficina.Nombre.Trim())
+                
+
+                if (computadora.TipoComputadoraId == 0 || computadora.TipoDiscoId == 0 || computadora.ProcesadorId == 0 || computadora.TipoMemoriaId == 0)
                 {
-                    ModelState.AddModelError("Nombre", "No debe haber espacios al incio ni al final");
-
-                    ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre", oficina.EmpresaId);
-                    ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre", oficina.CiudadId);
-
-                    return View(oficina);
-                }
-
-                if (oficina.EmpresaId == 0 || oficina.CiudadId == 0)
-                {
-                    if (oficina.EmpresaId == 0)
+                    if (computadora.TipoComputadoraId == 0)
                     {
-                        ModelState.AddModelError("Empresa", "Seleccione una empresa");
+                        ModelState.AddModelError("TipoComputadora", "Seleccione un tipo de computadora");
                     }
 
-                    if (oficina.CiudadId == 0)
+                    if (computadora.TipoDiscoId == 0)
                     {
-                        ModelState.AddModelError("Ciudad", "Seleccione una ciudad");
+                        ModelState.AddModelError("TipoDisco", "Seleccione un tipo de disco");
                     }
 
-                    ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre", oficina.EmpresaId);
-                    ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre", oficina.CiudadId);
-                    return View(oficina);
+                    if (computadora.ProcesadorId == 0)
+                    {
+                        ModelState.AddModelError("Procesador", "Seleccione un tipo de procesador");
+                    }
+
+                    if (computadora.TipoMemoriaId == 0)
+                    {
+                        ModelState.AddModelError("TipoMemoria", "Seleccione un tipo de memoria");
+                    }
+
+                    ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);
+                    ViewBag.ProcesadorId = new SelectList(Procesadores, "Id", "Nombre", computadora.ProcesadorId);
+                    ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre", computadora.TipoMemoriaId);
+                    ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);
+                    ViewBag.TipoDiscoId = new SelectList(tipoDiscos, "Id", "Nombre", computadora.TipoDiscoId);
+                    ViewBag.EmpleadoId = new SelectList(empleados, "Id", "Nombres", computadora.EmpleadoId);
+
+                    return View(computadora);
                 }
 
-                _oficinaBL.guardarOficina(oficina);
-                return RedirectToAction("Index");
+                _computadoraBL.guardarComputadora(computadora);
+                return RedirectToAction("ComputadorasAsignadas", "Empleados", new { empleadoId = computadora.EmpleadoId });
             }
 
-            ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre", oficina.EmpresaId);
-            ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre", oficina.CiudadId);
+            ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);
+            ViewBag.ProcesadorId = new SelectList(Procesadores, "Id", "Nombre", computadora.ProcesadorId);
+            ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre", computadora.TipoMemoriaId);
+            ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);
+            ViewBag.TipoDiscoId = new SelectList(tipoDiscos, "Id", "Nombre", computadora.TipoDiscoId);
+            ViewBag.EmpleadoId = new SelectList(empleados, "Id", "Nombres", computadora.EmpleadoId);
 
-            return View(oficina);
-        }*/
+            return View(computadora);
+        }
+
+        public ActionResult Detalle(int id)
+        {
+            var computadora = _computadoraBL.obtenerComputadora(id);
+
+            return View(computadora);
+        }
+
     }
 }

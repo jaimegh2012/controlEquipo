@@ -19,20 +19,25 @@ namespace ControlEquipo.BL
 
         public List<Computadora> obtenerComputadoras()
         {
-            listaComputadoras = _contexto.Computadoras.Include("Marca").Include("Procesador").Include("TipoMemoria").Include("TipoComputadora").Include("TipoDisco").OrderBy(a => a.Hostname).ToList();
+            listaComputadoras = _contexto.Computadoras.Include("Marca").Include("Procesador").Include("TipoMemoria")
+                .Include("TipoComputadora").Include("TipoDisco").Include("Empleado")
+                .OrderBy(a => a.Hostname).ToList();
             return listaComputadoras;
         }
 
         public List<Computadora> obtenerComputadorasPorEmpleado(int id)
         {
-            listaComputadoras = _contexto.Computadoras.Include("Marca").Include("Procesador").Include("TipoMemoria").Include("TipoComputadora").Include("TipoDisco")
+            listaComputadoras = _contexto.Computadoras.Include("Marca").Include("Procesador").Include("TipoMemoria")
+                .Include("TipoComputadora").Include("TipoDisco").Include("Empleado")
                 .Where(x => x.EmpleadoId == id).OrderBy(a => a.Hostname).ToList();
             return listaComputadoras;
         }
 
         public Computadora obtenerComputadora(int id)
         {
-            var computadora = _contexto.Computadoras.Include("Marca").Include("Procesador").Include("TipoMemoria").FirstOrDefault(a => a.Id == id);
+            var computadora = _contexto.Computadoras.Include("Marca").Include("Procesador").Include("TipoMemoria")
+                .Include("TipoComputadora").Include("TipoDisco").Include("Empleado")
+                .FirstOrDefault(a => a.Id == id);
             return computadora;
         }
 
@@ -45,7 +50,7 @@ namespace ControlEquipo.BL
             else
             {
                 var computadoraExistente = _contexto.Computadoras.Find(computadora.Id);
-                computadoraExistente.TipoComputadora = computadora.TipoComputadora;
+                computadoraExistente.TipoComputadoraId = computadora.TipoComputadoraId;
                 computadoraExistente.Hostname = computadora.Hostname;
                 computadoraExistente.DirecionIP = computadora.DirecionIP;
                 computadoraExistente.Serie = computadora.Serie;
@@ -55,7 +60,7 @@ namespace ControlEquipo.BL
                 computadoraExistente.TipoMemoriaId = computadora.TipoMemoriaId;
                 computadoraExistente.Memoria = computadora.Memoria;
                 computadoraExistente.CapacidadAlmacenamiento = computadora.CapacidadAlmacenamiento;
-                computadoraExistente.TipoDisco = computadora.TipoDisco;
+                computadoraExistente.TipoDiscoId = computadora.TipoDiscoId;
                 computadoraExistente.OtraInformacion = computadora.OtraInformacion;
                 computadoraExistente.Observaciones = computadora.Observaciones;
                 computadoraExistente.EmpleadoId = computadora.EmpleadoId;

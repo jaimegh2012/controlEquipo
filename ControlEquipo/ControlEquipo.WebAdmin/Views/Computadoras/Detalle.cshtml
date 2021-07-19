@@ -1,0 +1,154 @@
+﻿@model ControlEquipo.BL.Computadora
+
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Computadora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoComputadora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoComputadora.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hostname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hostname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DirecionIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DirecionIP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Serie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Procesador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Procesador.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneracionProcesador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneracionProcesador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoMemoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoMemoria.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Memoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Memoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CapacidadAlmacenamiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapacidadAlmacenamiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoDisco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoDisco.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtraInformacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtraInformacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaUltimaActualiacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaUltimaActualiacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.Nombres) @Html.DisplayFor(model => model.Empleado.Apellidos) 
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar", "ComputadorasAsignadas", "Empleados", new {empleadoId = Model.EmpleadoId }, null)
+</p>

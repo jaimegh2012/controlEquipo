@@ -205,6 +205,8 @@
     <Content Include="Views\Computadoras\Crear.cshtml" />
     <Content Include="Views\Computadoras\Index.cshtml" />
     <Content Include="Views\Empleados\ComputadorasAsignadas.cshtml" />
+    <Content Include="Views\Computadoras\Detalle.cshtml" />
+    <Content Include="Views\Computadoras\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -239,7 +241,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49813</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49813/</IISUrl>
+          <IISUrl>http://localhost:2048/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

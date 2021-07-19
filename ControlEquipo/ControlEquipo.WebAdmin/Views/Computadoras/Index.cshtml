@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TipoComputadoraId)
+            @Html.DisplayNameFor(model => model.TipoComputadora)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Hostname)
@@ -21,37 +21,10 @@
             @Html.DisplayNameFor(model => model.DirecionIP)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Serie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MarcaId)
+            @Html.DisplayNameFor(model => model.Marca)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Modelo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProcesadorId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GeneracionProcesador)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoMemoriaId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Memoria)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CapacidadAlmacenamiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoDiscoId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OtraInformacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Observaciones)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FechaUltimaActualiacion)
@@ -59,16 +32,15 @@
         <th>
             @Html.DisplayNameFor(model => model.Disponible)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmpleadoId)
-        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TipoComputadoraId)
+            @Html.DisplayFor(modelItem => item.TipoComputadora.Nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Hostname)
@@ -76,53 +48,27 @@
         <td>
             @Html.DisplayFor(modelItem => item.DirecionIP)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.Serie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MarcaId)
+            @Html.DisplayFor(modelItem => item.Marca.Nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Modelo)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProcesadorId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GeneracionProcesador)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoMemoriaId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Memoria)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CapacidadAlmacenamiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoDiscoId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OtraInformacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observaciones)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.FechaUltimaActualiacion)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Disponible)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.EmpleadoId)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
-            @Html.ActionLink("Detalle", "Detalle", new { id=item.Id })
+            @Html.ActionLink("Editar", "Editar", "Computadoras", new { id = item.Id }, null) |
+            @Html.ActionLink("Detalle", "Detalle", "Computadoras", new { id = item.Id }, null)
         </td>
     </tr>
+
 }
 
 </table>

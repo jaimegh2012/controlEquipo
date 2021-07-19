@@ -57,7 +57,7 @@
         <td>
             @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
             @Html.ActionLink("Detalle", "Detalle", new { id = item.Id }) |
-            @Html.ActionLink("Computadoras", "ComputadorasAsignadas", new { id = item.Id }, null)
+            @Html.ActionLink("Computadoras", "ComputadorasAsignadas", new { empleadoId = item.Id }, null)
         </td>
     </tr>
 }

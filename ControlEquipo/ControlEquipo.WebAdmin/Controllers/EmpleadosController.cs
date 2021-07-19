@@ -32,9 +32,10 @@ namespace ControlEquipo.WebAdmin.Controllers
             return View(listaEmpleados);
         }
 
-        public ActionResult ComputadorasAsignadas(int id)
+        public ActionResult ComputadorasAsignadas(int empleadoId)
         {
-            var listaComputadoras = _computadoraBL.obtenerComputadorasPorEmpleado(id);
+            var listaComputadoras = _computadoraBL.obtenerComputadorasPorEmpleado(empleadoId);
+            ViewBag.EmpleadoId = empleadoId;
             return View(listaComputadoras);
         }
 

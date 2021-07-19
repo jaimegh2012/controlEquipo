@@ -15,7 +15,7 @@ namespace ControlEquipo.BL
         }
 
         public int Id { get; set; }
-        public string TipoComputadoraId { get; set; }
+        public int TipoComputadoraId { get; set; }
         public TipoComputadora TipoComputadora { get; set; }
         public string Hostname { get; set; }
         public string DirecionIP { get; set; }
@@ -30,7 +30,7 @@ namespace ControlEquipo.BL
         public TipoMemoria TipoMemoria { get; set; }
         public int Memoria { get; set; }
         public int CapacidadAlmacenamiento { get; set; }
-        public string TipoDiscoId { get; set; }
+        public int TipoDiscoId { get; set; }
         public TipoDisco TipoDisco { get; set; }
         public string OtraInformacion { get; set; }
         public string Observaciones { get; set; }
