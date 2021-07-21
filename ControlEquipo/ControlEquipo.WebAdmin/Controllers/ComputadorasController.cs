@@ -136,6 +136,7 @@ namespace ControlEquipo.WebAdmin.Controllers
             ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);
             ViewBag.TipoDiscoId = new SelectList(tipoDiscos, "Id", "Nombre", computadora.TipoDiscoId);
             ViewBag.EmpleadoId = new SelectList(empleados, "Id", "Nombres", computadora.EmpleadoId);
+
             return View(computadora);
         }
 
@@ -187,7 +188,7 @@ namespace ControlEquipo.WebAdmin.Controllers
                 }
 
                 _computadoraBL.guardarComputadora(computadora);
-                return RedirectToAction("ComputadorasAsignadas", "Empleados", new { empleadoId = computadora.EmpleadoId });
+                return RedirectToAction("Index", "Computadoras");
             }
 
             ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);

@@ -207,6 +207,8 @@
     <Content Include="Views\Empleados\ComputadorasAsignadas.cshtml" />
     <Content Include="Views\Computadoras\Detalle.cshtml" />
     <Content Include="Views\Computadoras\Editar.cshtml" />
+    <Content Include="Views\Empleados\EditarComputadoraAsignada.cshtml" />
+    <Content Include="Views\Empleados\DetalleComputadoraAsignada.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

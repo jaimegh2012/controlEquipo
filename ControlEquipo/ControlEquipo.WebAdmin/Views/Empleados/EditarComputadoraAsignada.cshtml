@@ -1,15 +1,15 @@
 ﻿@model ControlEquipo.BL.Computadora
 
 @{
-    ViewBag.Title = "Editar";
+    ViewBag.Title = "EditarComputadoraAsignada";
 }
 
-<h2>Editar</h2>
+<h2>EditarComputadoraAsignada</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Computadora</h4>
         <hr />
@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TipoComputadora, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("TipoComputadoraId", null, htmlAttributes: new { @class = "form-control" } )
+                @Html.DropDownList("TipoComputadoraId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TipoComputadora, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -107,7 +107,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TipoDisco, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-               @Html.DropDownList("TipoDiscoId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("TipoDiscoId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TipoDisco, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -163,5 +163,5 @@
 }
 
 <div>
-    @Html.ActionLink("Regresar", "Index", "Computadoras")
+    @Html.ActionLink("Regresar", "ComputadorasAsignadas", "Empleados", new { empleadoId = Model.EmpleadoId }, null)
 </div>

@@ -7,7 +7,7 @@
 <h2>ComputadorasAsignadas</h2>
 
 <p>
-    @Html.ActionLink("Nueva Computadora", "Crear", "Computadoras", new {empleadoId = @ViewBag.EmpleadoId }, null)
+    @Html.ActionLink("Nueva Computadora", "Crear", "Computadoras", new {empleadoId = @ViewBag.EmpleadoId}, null)
 </p>
 <table class="table">
     <tr>
@@ -64,8 +64,8 @@
             </td>
 
             <td>
-                @Html.ActionLink("Editar", "Editar", "Computadoras", new { id = item.Id }, null) |
-                @Html.ActionLink("Detalle", "Detalle", "Computadoras", new { id = item.Id }, null)
+                @Html.ActionLink("Editar", "EditarComputadoraAsignada", "Empleados", new { id = item.Id}, null) |
+                @Html.ActionLink("Detalle", "DetalleComputadoraAsignada", "Empleados", new { id = item.Id }, null)
             </td>
         </tr>
 

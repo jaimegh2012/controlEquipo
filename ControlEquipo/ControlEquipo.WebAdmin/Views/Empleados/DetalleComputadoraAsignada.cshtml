@@ -1,10 +1,10 @@
 ﻿@model ControlEquipo.BL.Computadora
 
 @{
-    ViewBag.Title = "Detalle";
+    ViewBag.Title = "DetalleComputadoraAsignada";
 }
 
-<h2>Detalle</h2>
+<h2>DetalleComputadoraAsignada</h2>
 
 <div>
     <h4>Computadora</h4>
@@ -143,12 +143,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Empleado.Nombres) @Html.DisplayFor(model => model.Empleado.Apellidos) 
+            @Html.DisplayFor(model => model.Empleado.Nombres) @Html.DisplayFor(model => model.Empleado.Apellidos)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
-    @Html.ActionLink("Regresar", "Index", "Computadoras")
+    @Html.ActionLink("Editar", "EditarComputadoraAsignada", "Empleados", new { id = Model.Id }, null) |
+    @Html.ActionLink("Regresar", "ComputadorasAsignadas", "Empleados", new { empleadoId = Model.EmpleadoId }, null)
 </p>

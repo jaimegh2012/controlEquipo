@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,9 +26,12 @@ namespace ControlEquipo.BL
         public string Modelo { get; set; }
         public int ProcesadorId { get; set; }
         public Procesador Procesador { get; set; }
+        [Range(minimum:1, maximum:50, ErrorMessage = "Ingrese un número válido")]
         public int GeneracionProcesador { get; set; }
         public int TipoMemoriaId { get; set; }
         public TipoMemoria TipoMemoria { get; set; }
+
+        [Range(minimum: 1, maximum: 100, ErrorMessage = "Ingrese un número válido")]
         public int Memoria { get; set; }
         public int CapacidadAlmacenamiento { get; set; }
         public int TipoDiscoId { get; set; }
