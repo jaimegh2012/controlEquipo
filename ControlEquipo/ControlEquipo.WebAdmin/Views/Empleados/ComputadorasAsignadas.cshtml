@@ -64,15 +64,15 @@
             </td>
 
             <td>
-                @Html.ActionLink("Editar", "EditarComputadoraAsignada", "Empleados", new { id = item.Id}, null) |
+                @Html.ActionLink("Editar", "EditarComputadoraAsignada", "Empleados", new { id = item.Id, item.EmpleadoId}, null) |
                 @Html.ActionLink("Detalle", "DetalleComputadoraAsignada", "Empleados", new { id = item.Id }, null)
             </td>
         </tr>
 
-        @Html.ActionLink("Regresar", "Index", "Empleados")
+        
     }
 
-
+@Html.ActionLink("Regresar", "Index", "Empleados")
    
 </table>
 

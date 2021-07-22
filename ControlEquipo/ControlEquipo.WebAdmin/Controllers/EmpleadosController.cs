@@ -19,6 +19,8 @@ namespace ControlEquipo.WebAdmin.Controllers
         TipoComputadoraBL _tipoComputadoraBL;
         TipoDiscoBL _tipoDiscoBL;
 
+        int _empleadoId = 0;
+
         List<Empleado> listaEmpleados;
 
         public EmpleadosController()
@@ -49,8 +51,9 @@ namespace ControlEquipo.WebAdmin.Controllers
             return View(listaComputadoras);
         }
 
-        public ActionResult EditarComputadoraAsignada(int id)
+        public ActionResult EditarComputadoraAsignada(int id, int empleadoId)
         {
+            
             var computadora = _computadoraBL.obtenerComputadora(id);
             var marcas = _marcaBL.obtenerMarcas();
             var Procesadores = _procesadorBL.obtenerProcesadores();
@@ -66,7 +69,6 @@ namespace ControlEquipo.WebAdmin.Controllers
             ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);
             ViewBag.TipoDiscoId = new SelectList(tipoDiscos, "Id", "Nombre", computadora.TipoDiscoId);
             ViewBag.EmpleadoId = new SelectList(empleados, "Id", "Nombres", computadora.EmpleadoId);
-
             return View(computadora);
         }
 
@@ -79,6 +81,7 @@ namespace ControlEquipo.WebAdmin.Controllers
             var tipoComputadoras = _tipoComputadoraBL.obtenerTipoComputadoras();
             var tipoDiscos = _tipoDiscoBL.obtenerTipoDiscos();
             var empleados = _empleadoBL.obtenerEmpleados();
+            var empleado = _empleadoBL.obtenerEmpleado(computadora.EmpleadoId);
 
 
             if (ModelState.IsValid)
@@ -118,7 +121,7 @@ namespace ControlEquipo.WebAdmin.Controllers
                 }
 
                 _computadoraBL.guardarComputadora(computadora);
-                return RedirectToAction("ComputadorasAsignadas", "Empleados", new { empleadoId = computadora.EmpleadoId });
+                return RedirectToAction("Index", "Empleados");
             }
 
             ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);
