@@ -218,6 +218,7 @@
     <Content Include="Views\Computadoras\AccesoriosAsignados.cshtml" />
     <Content Include="Views\Computadoras\EditarAccesorioAsignado.cshtml" />
     <Content Include="Views\Computadoras\DetalleAccesorioAsignado.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
