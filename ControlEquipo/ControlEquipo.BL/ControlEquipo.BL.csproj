@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accesorio.cs" />
+    <Compile Include="AccesorioBL.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="AreaBL.cs" />
     <Compile Include="Ciudad.cs" />
@@ -71,6 +73,8 @@
     <Compile Include="Procesador.cs" />
     <Compile Include="ProcesadorBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoAccesorio.cs" />
+    <Compile Include="TipoAccesorioBL.cs" />
     <Compile Include="TipoComputadora.cs" />
     <Compile Include="TipoComputadoraBL.cs" />
     <Compile Include="TipoDisco.cs" />

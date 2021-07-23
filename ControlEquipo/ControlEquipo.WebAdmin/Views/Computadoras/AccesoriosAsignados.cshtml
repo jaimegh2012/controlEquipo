@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ControlEquipo.BL.Accesorio>
+
+@{
+    ViewBag.Title = "AccesoriosAsignados";
+}
+
+<h2>AccesoriosAsignados</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Accesorio", "Crear", "Accesorios", new {computadoraId = @ViewBag.ComputadoraId }, null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoAccesorioId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdMarca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComputadoraId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Serie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoAccesorio.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marca.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Computadora.Hostname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Serie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observaciones)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disponible)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarAccesorioAsignado", new { id=item.Id }) |
+            @Html.ActionLink("Detalle", "DetalleAccesorioAsignado", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

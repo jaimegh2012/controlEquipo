@@ -32,6 +32,8 @@ namespace ControlEquipo.BL
         public DbSet<Computadora> Computadoras { get; set; }
         public DbSet<TipoComputadora> TipoComputadoras { get; set; }
         public DbSet<TipoDisco> TipoDiscos { get; set; }
+        public DbSet<TipoAccesorio> TipoAccesorios { get; set; }
+        public DbSet<Accesorio> Accesorios { get; set; }
 
     }
 }

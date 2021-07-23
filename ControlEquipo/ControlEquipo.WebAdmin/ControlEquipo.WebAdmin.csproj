@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccesoriosController.cs" />
     <Compile Include="Controllers\AreasController.cs" />
     <Compile Include="Controllers\CiudadesController.cs" />
     <Compile Include="Controllers\ComputadorasController.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\OficinasController.cs" />
     <Compile Include="Controllers\ProcesadoresController.cs" />
+    <Compile Include="Controllers\TipoAccesoriosController.cs" />
     <Compile Include="Controllers\TipoMemoriasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -209,6 +211,13 @@
     <Content Include="Views\Computadoras\Editar.cshtml" />
     <Content Include="Views\Empleados\EditarComputadoraAsignada.cshtml" />
     <Content Include="Views\Empleados\DetalleComputadoraAsignada.cshtml" />
+    <Content Include="Views\TipoAccesorios\Index.cshtml" />
+    <Content Include="Views\TipoAccesorios\Crear.cshtml" />
+    <Content Include="Views\TipoAccesorios\Editar.cshtml" />
+    <Content Include="Views\Accesorios\Crear.cshtml" />
+    <Content Include="Views\Computadoras\AccesoriosAsignados.cshtml" />
+    <Content Include="Views\Computadoras\EditarAccesorioAsignado.cshtml" />
+    <Content Include="Views\Computadoras\DetalleAccesorioAsignado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

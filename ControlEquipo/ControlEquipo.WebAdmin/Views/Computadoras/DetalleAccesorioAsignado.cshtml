@@ -1,0 +1,65 @@
+﻿@model ControlEquipo.BL.Accesorio
+
+@{
+    ViewBag.Title = "DetalleAccesorioAsignado";
+}
+
+<h2>DetalleAccesorioAsignado</h2>
+
+<div>
+    <h4>Accesorio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoAccesorioId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoAccesorio.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdMarca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdMarca) @Html.DisplayFor(model => model.Marca.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComputadoraId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Computadora.Hostname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Serie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponible)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Regresar", "AccesoriosAsignados", "Computadoras", new {computadoraId = Model.ComputadoraId }, null)
+</p>
