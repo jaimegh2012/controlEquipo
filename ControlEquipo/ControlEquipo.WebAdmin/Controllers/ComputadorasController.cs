@@ -98,7 +98,7 @@ namespace ControlEquipo.WebAdmin.Controllers
 
 
                 _accesorioBL.guardarAccesorio(accesorio);
-                return RedirectToAction("Index");
+                return RedirectToAction("AccesoriosAsignados", "Computadoras", new {computadoraId = accesorio.ComputadoraId });
             }
 
             ViewBag.TipoAccesorioId = new SelectList(tiposAccesorios, "Id", "Nombre", accesorio.TipoAccesorioId);
@@ -169,7 +169,7 @@ namespace ControlEquipo.WebAdmin.Controllers
                         ModelState.AddModelError("TipoMemoria", "Seleccione un tipo de memoria");
                     }
 
-                    ViewBag.IdMarca = new SelectList(marcas, "Id", "Nombre");
+                    ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre");
                     ViewBag.ProcesadorId = new SelectList(Procesadores, "Id", "Nombre");
                     ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre");
                     ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre");
@@ -182,7 +182,7 @@ namespace ControlEquipo.WebAdmin.Controllers
                 return RedirectToAction("ComputadorasAsignadas", "Empleados", new {empleadoId = computadora.EmpleadoId});
             }
 
-            ViewBag.IdMarca = new SelectList(marcas, "Id", "Nombre");
+            ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre");
             ViewBag.ProcesadorId = new SelectList(Procesadores, "Id", "Nombre");
             ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre");
             ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre");
@@ -203,7 +203,7 @@ namespace ControlEquipo.WebAdmin.Controllers
             var empleados = _empleadoBL.obtenerEmpleados();
 
 
-            ViewBag.IdMarca = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);
+            ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);
             ViewBag.ProcesadorId = new SelectList(Procesadores, "Id", "Nombre", computadora.ProcesadorId);
             ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre", computadora.TipoMemoriaId);
             ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);
@@ -250,7 +250,7 @@ namespace ControlEquipo.WebAdmin.Controllers
                         ModelState.AddModelError("TipoMemoria", "Seleccione un tipo de memoria");
                     }
 
-                    ViewBag.IdMarca = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);
+                    ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);
                     ViewBag.ProcesadorId = new SelectList(Procesadores, "Id", "Nombre", computadora.ProcesadorId);
                     ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre", computadora.TipoMemoriaId);
                     ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);
@@ -264,7 +264,7 @@ namespace ControlEquipo.WebAdmin.Controllers
                 return RedirectToAction("Index", "Computadoras");
             }
 
-            ViewBag.IdMarca = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);
+            ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);
             ViewBag.ProcesadorId = new SelectList(Procesadores, "Id", "Nombre", computadora.ProcesadorId);
             ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre", computadora.TipoMemoriaId);
             ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);

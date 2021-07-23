@@ -38,9 +38,18 @@ namespace ControlEquipo.WebAdmin.Controllers
         }
 
         // GET: Empleados
-        public ActionResult Index()
+        public ActionResult Index(string nombre)
         {
-            listaEmpleados = _empleadoBL.obtenerEmpleados();
+            if (nombre == "")
+            {
+                listaEmpleados = _empleadoBL.obtenerEmpleados();
+
+            }
+            else
+            {
+                listaEmpleados = _empleadoBL.obtenerEmpleados();
+            }
+            
             return View(listaEmpleados);
         }
 

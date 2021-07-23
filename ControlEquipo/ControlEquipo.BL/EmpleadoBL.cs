@@ -23,6 +23,12 @@ namespace ControlEquipo.BL
             return listaEmpleados;
         }
 
+        public List<Empleado> obtenerEmpleadosPorNombre(string nombre)
+        {
+            listaEmpleados = _contexto.Empleados.Include("Oficina").Include("Area").Where(b => b.Nombres == nombre).OrderBy(a => a.Nombres).ToList();
+            return listaEmpleados;
+        }
+
         public Empleado obtenerEmpleado(int id)
         {
             var empleado = _contexto.Empleados.Include("Area").Include("Oficina").FirstOrDefault(a => a.Id == id);
