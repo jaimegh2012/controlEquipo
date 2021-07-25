@@ -40,29 +40,23 @@ namespace ControlEquipo.WebAdmin.Controllers
         // GET: Empleados
         public ActionResult Index(string nombre)
         {
-            if (nombre == "")
-            {
-                listaEmpleados = _empleadoBL.obtenerEmpleados();
+            listaEmpleados = _empleadoBL.obtenerEmpleadosPorNombre(nombre);
 
-            }
-            else
-            {
-                listaEmpleados = _empleadoBL.obtenerEmpleados();
-            }
-            
             return View(listaEmpleados);
         }
 
         public ActionResult ComputadorasAsignadas(int empleadoId)
         {
+            var empleado = _empleadoBL.obtenerEmpleado(empleadoId);
             var listaComputadoras = _computadoraBL.obtenerComputadorasPorEmpleado(empleadoId);
             ViewBag.EmpleadoId = empleadoId;
+            ViewBag.nombreEmpleado = empleado.Nombres + " " + empleado.Apellidos;
             return View(listaComputadoras);
         }
 
         public ActionResult EditarComputadoraAsignada(int id, int empleadoId)
         {
-            
+            TempData["empleadoId"] = empleadoId;
             var computadora = _computadoraBL.obtenerComputadora(id);
             var marcas = _marcaBL.obtenerMarcas();
             var Procesadores = _procesadorBL.obtenerProcesadores();
@@ -129,8 +123,9 @@ namespace ControlEquipo.WebAdmin.Controllers
                     return View(computadora);
                 }
 
+                computadora.FechaUltimaActualiacion = DateTime.Now;
                 _computadoraBL.guardarComputadora(computadora);
-                return RedirectToAction("Index", "Empleados");
+                return RedirectToAction("ComputadorasAsignadas", "Empleados", new {empleadoId = TempData["empleadoId"] });
             }
 
             ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);

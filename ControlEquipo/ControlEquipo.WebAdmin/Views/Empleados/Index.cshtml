@@ -6,70 +6,74 @@
 
 <h2>Index</h2>
 
+
 <p>
-    @Html.ActionLink("Nuevo Empleado", "Crear")
+    @Html.ActionLink("Nuevo Empleado", "Crear", null, new { @class = "btn btn-success" })
 </p>
 
 @using (Html.BeginForm())
 {
     <p>
-        Buscar por nombre: @Html.TextBox("nombre")
-        <input type="submit" value="Buscar" />
+        @Html.TextBox("nombre", null, new {size = "50", placeholder = "Buscar por nombre, apellido u oficina", autofocus = "autofocus" })
+        <input type="submit" value="Buscar" class = "btn btn-warning", />
     </p>
+
+    
 }
 
 
-<table class="table">
-    <tr>
-        <th>
+<table class="table table-hover table-responsive table-info">
+    <tr >
+        <th class="success table-bordered">
             @Html.DisplayNameFor(model => model.Nombres)
         </th>
-        <th>
+        <th class="success table-bordered">
             @Html.DisplayNameFor(model => model.Apellidos)
         </th>
-        <th>
+        <th class="success table-bordered">
             @Html.DisplayNameFor(model => model.Correo)
         </th>
         
-        <th>
+        <th class="success table-bordered">
             @Html.DisplayNameFor(model => model.Area)
         </th>
-        <th>
+        <th class="success table-bordered">
             @Html.DisplayNameFor(model => model.Oficina)
         </th>
-        <th>
+        <th class="success table-bordered">
             @Html.DisplayNameFor(model => model.Disponible)
         </th>
-        <th></th>
+        
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombres)  @Html.DisplayFor(modelItem => item.Apellidos)
+        <td class="table-bordered">
+            @Html.DisplayFor(modelItem => item.Nombres)
         </td>
-        <td>
+        <td class="table-bordered">
             @Html.DisplayFor(modelItem => item.Apellidos)
         </td>
-        <td>
+        <td class="table-bordered">
             @Html.DisplayFor(modelItem => item.Correo)
         </td>
        
-        <td>
+        <td class="table-bordered">
             @Html.DisplayFor(modelItem => item.Area.Nombre)
         </td>
-        <td>
+        <td class="table-bordered">
             @Html.DisplayFor(modelItem => item.Oficina.Nombre)
         </td>
-        <td>
+        <td class="table-bordered">
             @Html.DisplayFor(modelItem => item.Disponible)
         </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-            @Html.ActionLink("Detalle", "Detalle", new { id = item.Id }) |
-            @Html.ActionLink("Computadoras", "ComputadorasAsignadas", new { empleadoId = item.Id }, null)
-        </td>
+        <td class="table-bordered">
+            @Html.ActionLink("Editar", "Editar", new { id = item.Id }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Detalle", "Detalle", new { id = item.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Computadoras", "ComputadorasAsignadas", new { empleadoId = item.Id }, new { @class = "btn btn-success" })
+       </td>
     </tr>
 }
 
 </table>
+

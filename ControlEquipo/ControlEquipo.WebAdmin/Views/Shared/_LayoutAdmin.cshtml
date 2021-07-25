@@ -52,8 +52,13 @@
                         <li>
                             @Html.ActionLink("Tipos de Accesorio", "Index", "TipoAccesorios", null, new { @class = "sf-layers" })
                         </li>
+
                         <li>
-                            @Html.ActionLink("Empleados", "Index", "Empleados", null, new { @class = "sf-profile-group" })
+                            @Html.ActionLink("Empleados", "Index", "Empleados", new {nombre = "" }, new { @class = "sf-profile-group" })
+                        </li>
+
+                        <li>
+                            @Html.ActionLink("Computadoras", "Index", "Computadoras", new { disponible = true, tipoComputadoraId = 0}, new { @class = "sf-device-laptop" })
                         </li>
                     </ul>
                 </div>

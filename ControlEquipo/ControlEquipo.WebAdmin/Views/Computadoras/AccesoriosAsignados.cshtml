@@ -7,7 +7,7 @@
 <h2>AccesoriosAsignados</h2>
 
 <p>
-    @Html.ActionLink("Nuevo Accesorio", "Crear", "Accesorios", new {computadoraId = @ViewBag.ComputadoraId }, null)
+    @Html.ActionLink("Nuevo Accesorio", "Crear", "Accesorios", new {computadoraId = @ViewBag.ComputadoraId, empleadoId = ViewBag.empleadoId }, null)
 </p>
 <table class="table">
     <tr>
@@ -60,3 +60,12 @@
 }
 
 </table>
+@if (@ViewBag.empleadoId == 0)
+{
+    @Html.ActionLink("Regresar", "Index", "Computadoras", new { disponible = true, tipoComputadoraId = 0 }, new { @class = "btn btn-success" })
+}
+else
+{
+    @Html.ActionLink("Regresar", "ComputadorasAsignadas", "Empleados", new { empleadoId = @ViewBag.empleadoId }, new { @class = "btn btn-success" })
+
+}

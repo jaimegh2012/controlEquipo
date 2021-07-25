@@ -32,8 +32,11 @@ namespace ControlEquipo.WebAdmin.Controllers
             return View(listaAccesorios);
         }
 
-        public ActionResult Crear(int computadoraId)
+        int empleado = 0;
+        public ActionResult Crear(int computadoraId, int empleadoId)
         {
+            TempData["empleadoId"] = empleadoId;
+            empleado = empleadoId;
             var nuevoAccesorio = new Accesorio();
             var computadora = _computadoraBL.obtenerComputadora(computadoraId);
             nuevoAccesorio.ComputadoraId = computadora.Id;
@@ -45,6 +48,7 @@ namespace ControlEquipo.WebAdmin.Controllers
 
             ViewBag.TipoAccesorioId = new SelectList(tiposAccesorios, "Id", "Nombre");
             ViewBag.IdMarca = new SelectList(marcas, "Id", "Nombre");
+            ViewBag.empleadoId = empleadoId;
 
 
             return View(nuevoAccesorio);
@@ -78,7 +82,7 @@ namespace ControlEquipo.WebAdmin.Controllers
                 }
 
                 _accesorioBL.guardarAccesorio(accesorio);
-                return RedirectToAction("AccesoriosAsignados", "Computadoras", new { computadoraId = accesorio.ComputadoraId });
+                return RedirectToAction("AccesoriosAsignados", "Computadoras", new { computadoraId = accesorio.ComputadoraId, empleadoId = TempData["empleadoId"] });
             }
 
             ViewBag.TipoAccesorioId = new SelectList(tiposAccesorios, "Id", "Nombre");

@@ -4,7 +4,8 @@
     ViewBag.Title = "ComputadorasAsignadas";
 }
 
-<h2>ComputadorasAsignadas</h2>
+<h2>Computadoras Asignadas</h2>
+<h4>@ViewBag.nombreEmpleado</h4>
 
 <p>
     @Html.ActionLink("Nueva Computadora", "Crear", "Computadoras", new {empleadoId = @ViewBag.EmpleadoId}, null)
@@ -66,14 +67,18 @@
             <td>
                 @Html.ActionLink("Editar", "EditarComputadoraAsignada", "Empleados", new { id = item.Id, item.EmpleadoId}, null) |
                 @Html.ActionLink("Detalle", "DetalleComputadoraAsignada", "Empleados", new { id = item.Id }, null) |
-                @Html.ActionLink("Accesorios", "AccesoriosAsignados", "Computadoras", new { computadoraId = item.Id }, null)
+                @Html.ActionLink("Accesorios", "AccesoriosAsignados", "Computadoras", new { computadoraId = item.Id, empleadoId = item.EmpleadoId }, null)
             </td>
         </tr>
 
         
     }
 
-@Html.ActionLink("Regresar", "Index", "Empleados")
+
    
 </table>
+
+<div>
+    @Html.ActionLink("Regresar", "Index", "Empleados")
+</div>
 

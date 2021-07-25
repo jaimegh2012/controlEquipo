@@ -72,6 +72,14 @@
     </div>
 }
 
+
 <div>
-    @Html.ActionLink("Regresar", "AccesoriosAsignados", "Computadoras", new {computadoraId = Model.ComputadoraId }, null)
+    @if (ViewBag.empleadoId == 0) 
+    {
+        @Html.ActionLink("Regresar", "AccesoriosAsignados", "Computadoras", new { computadoraId = Model.ComputadoraId, empleadoId = 0 }, null)
+    }
+    else
+    {
+        @Html.ActionLink("Regresar", "AccesoriosAsignados", "Computadoras", new { computadoraId = Model.ComputadoraId, empleadoId = ViewBag.empleadoId }, null)
+    }
 </div>

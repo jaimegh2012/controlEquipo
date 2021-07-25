@@ -33,6 +33,31 @@ namespace ControlEquipo.BL
             return listaComputadoras;
         }
 
+        public List<Computadora> obtenerComputadorasDisponibles(bool disponible)
+        {
+            listaComputadoras = _contexto.Computadoras.Include("Marca").Include("Procesador").Include("TipoMemoria")
+                .Include("TipoComputadora").Include("TipoDisco").Include("Empleado")
+                .Where(x => x.Disponible == disponible).OrderBy(a => a.Hostname).ToList();
+            return listaComputadoras;
+        }
+
+        public List<Computadora> obtenerComputadorasDisponiblesPorTipo(bool disponible, int tipoComputadoraId)
+        {
+            if (tipoComputadoraId == 0 || tipoComputadoraId == null)
+            {
+                listaComputadoras = _contexto.Computadoras.Include("Marca").Include("Procesador").Include("TipoMemoria")
+                .Include("TipoComputadora").Include("TipoDisco").Include("Empleado")
+                .Where(x => x.Disponible == disponible).OrderBy(a => a.Hostname).ToList();
+            }else
+            {
+                listaComputadoras = _contexto.Computadoras.Include("Marca").Include("Procesador").Include("TipoMemoria")
+                .Include("TipoComputadora").Include("TipoDisco").Include("Empleado")
+                .Where(x => x.Disponible == disponible && x.TipoComputadoraId == tipoComputadoraId).OrderBy(a => a.Hostname).ToList();
+            }
+            return listaComputadoras;
+        }
+
+
         public Computadora obtenerComputadora(int id)
         {
             var computadora = _contexto.Computadoras.Include("Marca").Include("Procesador").Include("TipoMemoria")

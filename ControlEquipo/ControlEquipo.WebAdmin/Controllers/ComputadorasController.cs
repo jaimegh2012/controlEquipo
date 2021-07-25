@@ -39,16 +39,28 @@ namespace ControlEquipo.WebAdmin.Controllers
         #region FUNCIONES
         #endregion
         // GET: Oficinas
-        public ActionResult Index()
+        public ActionResult Index(bool disponible, int tipoComputadoraId)
         {
-            listaComputadoras = _computadoraBL.obtenerComputadoras();
+            var tiposComputadora = new List<TipoComputadora>();
+            var tipoComputadora = new TipoComputadora();
+            tipoComputadora.Id = 0;
+            tipoComputadora.Nombre = "---Todos---";
+
+            tiposComputadora = _tipoComputadoraBL.obtenerTipoComputadoras();
+            tiposComputadora.Insert(0, tipoComputadora);
+            ViewBag.tipoComputadoraId = new SelectList(tiposComputadora, "Id", "Nombre");
+
+            listaComputadoras = _computadoraBL.obtenerComputadorasDisponiblesPorTipo(disponible, tipoComputadoraId);
             return View(listaComputadoras);
         }
 
-        public ActionResult AccesoriosAsignados(int computadoraId)
+        public ActionResult AccesoriosAsignados(int computadoraId, int empleadoId) //si empleadoId viene con valor 0, significa que fue llamado desde computadoras
         {
             var listaAccesorios = _accesorioBL.obtenerAccesoriosPorComputadora(computadoraId);
             ViewBag.ComputadoraId = computadoraId;
+
+            var computadora = _computadoraBL.obtenerComputadora(computadoraId);
+            ViewBag.empleadoId = empleadoId;
 
             return View(listaAccesorios);
         }
@@ -260,8 +272,9 @@ namespace ControlEquipo.WebAdmin.Controllers
                     return View(computadora);
                 }
 
+                computadora.FechaUltimaActualiacion = DateTime.Now;
                 _computadoraBL.guardarComputadora(computadora);
-                return RedirectToAction("Index", "Computadoras");
+                return RedirectToAction("Index", "Computadoras", new {disponible = true, tipoComputadoraId = 0 });
             }
 
             ViewBag.MarcaId = new SelectList(marcas, "Id", "Nombre", computadora.MarcaId);

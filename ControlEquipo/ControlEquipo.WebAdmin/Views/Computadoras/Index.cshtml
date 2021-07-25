@@ -4,11 +4,34 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h3>Computadoras</h3>
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            <td>
+                Disponible: @Html.CheckBox("disponible")
+            </td>
+
+            <td>
+                Tipo Computadora: @Html.DropDownList("tipoComputadoraId")
+            </td>
+            
+            <td>
+                <input type="submit" value="Filtrar" class="btn btn-warning" />
+            </td>
+        </tr>
+        
+        
+    </table>
+     
 
 
-<table class="table">
-    <tr>
+}
+
+<table class="table table-hover table-responsive table-info">
+    <tr class="success">
         <th>
             @Html.DisplayNameFor(model => model.TipoComputadora)
         </th>
@@ -19,14 +42,10 @@
             @Html.DisplayNameFor(model => model.DirecionIP)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Marca)
+            @Html.DisplayNameFor(model => model.Empleado)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Modelo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaUltimaActualiacion)
-        </th>
+        
+        
         <th>
             @Html.DisplayNameFor(model => model.Disponible)
         </th>
@@ -48,22 +67,19 @@
         </td>
 
         <td>
-            @Html.DisplayFor(modelItem => item.Marca.Nombre)
+            @Html.DisplayFor(modelItem => item.Empleado.Nombres) @Html.DisplayFor(modelItem => item.Empleado.Apellidos) 
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Modelo)
-        </td>
+       
 
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaUltimaActualiacion)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Disponible)
         </td>
 
         <td>
-            @Html.ActionLink("Editar", "Editar", "Computadoras", new { id = item.Id}, null) |
-            @Html.ActionLink("Detalle", "Detalle", "Computadoras", new { id = item.Id }, null)
+            @Html.ActionLink("Editar", "Editar", "Computadoras", new { id = item.Id}, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Detalle", "Detalle", "Computadoras", new { id = item.Id }, new { @class = "btn btn-primary" })   
+            @Html.ActionLink("Accesorios", "AccesoriosAsignados", "Computadoras", new { computadoraId = item.Id, empleadoId = 0 }, new { @class = "btn btn-success" })
         </td>
     </tr>
 
