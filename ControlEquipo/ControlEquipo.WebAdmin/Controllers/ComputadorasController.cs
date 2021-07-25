@@ -59,6 +59,7 @@ namespace ControlEquipo.WebAdmin.Controllers
             var listaAccesorios = _accesorioBL.obtenerAccesoriosPorComputadora(computadoraId);
             ViewBag.ComputadoraId = computadoraId;
 
+            TempData["empleadoId"] = empleadoId; //guardar empleadoId como dato temporal para utilizarlo en la vista EditarAccesorioAsignado o cualquier vista
             var computadora = _computadoraBL.obtenerComputadora(computadoraId);
             ViewBag.empleadoId = empleadoId;
 
@@ -75,7 +76,9 @@ namespace ControlEquipo.WebAdmin.Controllers
             ViewBag.TipoAccesorioId = new SelectList(tiposAccesorios, "Id", "Nombre", accesorio.TipoAccesorioId);
             ViewBag.IdMarca = new SelectList(marcas, "Id", "Nombre", accesorio.IdMarca);
             ViewBag.ComputadoraId = new SelectList(computadoras, "Id", "Hostname", accesorio.ComputadoraId);
+            ViewBag.empleadoId = TempData["empleadoId"]; //usamos el dato temporal guardado en computadorasAsignadas y lo mandamos a la bosa de la vista
 
+            TempData["empleadoId"] = TempData["empleadoId"];
             return View(accesorio);
         }
 
@@ -110,7 +113,7 @@ namespace ControlEquipo.WebAdmin.Controllers
 
 
                 _accesorioBL.guardarAccesorio(accesorio);
-                return RedirectToAction("AccesoriosAsignados", "Computadoras", new {computadoraId = accesorio.ComputadoraId });
+                return RedirectToAction("AccesoriosAsignados", "Computadoras", new {computadoraId = accesorio.ComputadoraId, empleadoId = TempData["empleadoId"]});
             }
 
             ViewBag.TipoAccesorioId = new SelectList(tiposAccesorios, "Id", "Nombre", accesorio.TipoAccesorioId);
@@ -123,7 +126,7 @@ namespace ControlEquipo.WebAdmin.Controllers
         public ActionResult DetalleAccesorioAsignado(int id)
         {
             var accesorio = _accesorioBL.obtenerAccesorio(id);
-
+            ViewBag.empleadoId = TempData["empleadoId"];
             return View(accesorio);
         }
 

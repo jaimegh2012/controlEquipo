@@ -149,6 +149,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "EditarComputadoraAsignada", "Empleados", new { id = Model.Id }, null) |
-    @Html.ActionLink("Regresar", "ComputadorasAsignadas", "Empleados", new { empleadoId = Model.EmpleadoId }, null)
+    @Html.ActionLink("Editar", "EditarComputadoraAsignada", "Empleados", new { id = Model.Id, empleadoId = Model.EmpleadoId }, new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Regresar", "ComputadorasAsignadas", "Empleados", new { empleadoId = Model.EmpleadoId }, new { @class = "btn btn-success" })
 </p>

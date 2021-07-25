@@ -75,5 +75,5 @@
 }
 
 <div>
-    @Html.ActionLink("Regresar", "AccesoriosAsignados", "Computadoras", new {computadoraId = Model.ComputadoraId }, null)
+    @Html.ActionLink("Regresar", "AccesoriosAsignados", "Computadoras", new {computadoraId = Model.ComputadoraId, empleadoId = ViewBag.empleadoId }, null)
 </div>
