@@ -144,7 +144,9 @@
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Areas\Index.cshtml" />
     <Content Include="Views\Areas\Crear.cshtml" />
     <Content Include="Views\Areas\Editar.cshtml" />
@@ -168,11 +170,13 @@
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InicioSesionController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\OficinasController.cs" />
     <Compile Include="Controllers\ProcesadoresController.cs" />
     <Compile Include="Controllers\TipoAccesoriosController.cs" />
     <Compile Include="Controllers\TipoMemoriasController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,6 +223,11 @@
     <Content Include="Views\Computadoras\EditarAccesorioAsignado.cshtml" />
     <Content Include="Views\Computadoras\DetalleAccesorioAsignado.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\Crear.cshtml" />
+    <Content Include="Views\Usuarios\Editar.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\InicioSesion\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

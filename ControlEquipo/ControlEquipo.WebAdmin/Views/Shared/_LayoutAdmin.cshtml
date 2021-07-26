@@ -60,6 +60,11 @@
                         <li>
                             @Html.ActionLink("Computadoras", "Index", "Computadoras", new { disponible = true, tipoComputadoraId = 0}, new { @class = "sf-device-laptop" })
                         </li>
+
+                        <li>
+                            @Html.ActionLink("Usuarios", "Index", "Usuarios", null, new { @class = "sf-layers" })
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -85,26 +90,13 @@
                 </div>
             -->
 
-            <div class="dropdown navbar-static-top">
-                <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="login.html"><i class="fa fa-fw fa-sign-out"></i> Salir</a>
-                    </li>
-                    <li>
-                        @Html.ActionLink("Home", "/");
-                    </li>
-                </ul>
-            </div>
             <div class="dropdown pull-right">
                 <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="login.html"><i class="fa fa-fw fa-sign-out"></i> Salir</a>
+                        <a href="/InicioSesion"><i class="fa fa-fw fa-sign-out"></i> Salir</a>
                     </li>
-                    <li>
-                        @Html.ActionLink("Home", "/");
-                    </li>
+                    
                 </ul>
             </div>
         </nav>

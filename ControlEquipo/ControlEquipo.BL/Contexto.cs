@@ -34,6 +34,8 @@ namespace ControlEquipo.BL
         public DbSet<TipoDisco> TipoDiscos { get; set; }
         public DbSet<TipoAccesorio> TipoAccesorios { get; set; }
         public DbSet<Accesorio> Accesorios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+
 
     }
 }

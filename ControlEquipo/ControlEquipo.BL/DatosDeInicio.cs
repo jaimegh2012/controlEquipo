@@ -215,6 +215,23 @@ namespace ControlEquipo.BL
 
 
             #endregion
+
+            #region Usuarios
+            var usuario1 = new Usuario();
+            usuario1.Id = 1;
+            usuario1.Nombre = "JGH";
+            usuario1.Correo = "micorreo@hotmail.com";
+            usuario1.Password = "1234";
+            usuario1.Disponible = true;
+
+            usuario1.Password = Encriptar.CodificarContrasena(usuario1.Password);
+
+            contexto.Usuarios.Add(usuario1);
+
+            base.Seed(contexto);
+
+            
+            #endregion
         }
     }
 }

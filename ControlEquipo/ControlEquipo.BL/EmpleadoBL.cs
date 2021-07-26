@@ -37,6 +37,7 @@ namespace ControlEquipo.BL
             return listaEmpleados;
         }
 
+        
         public Empleado obtenerEmpleado(int id)
         {
             var empleado = _contexto.Empleados.Include("Area").Include("Oficina").FirstOrDefault(a => a.Id == id);

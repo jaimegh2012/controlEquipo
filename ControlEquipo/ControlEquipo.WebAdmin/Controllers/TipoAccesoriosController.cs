@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace ControlEquipo.WebAdmin.Controllers
 {
+    [Authorize]
     public class TipoAccesoriosController : Controller
     {
         TipoAccesorioBL _tipoAccesorioBL;

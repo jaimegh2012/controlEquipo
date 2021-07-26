@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace ControlEquipo.WebAdmin.Controllers
 {
+    [Authorize]
     public class ComputadorasController : Controller
     {
         ComputadoraBL _computadoraBL;
