@@ -4,22 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h3 style="font-style:oblique; font-weight:bold">Usuarios</h3>
 
 <p>
-    @Html.ActionLink("Nuevo Usuario", "Crear")
+    @Html.ActionLink("Nuevo Usuario", "Crear", null, new { @class = "btn btn-success" })
 </p>
-<table class="table">
-    <tr>
+<table class="table table-hover table-responsive table-info">
+    <tr class="success">
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Correo)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Disponible)
         </th>
@@ -33,9 +31,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Correo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Disponible)

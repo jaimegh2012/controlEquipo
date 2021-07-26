@@ -4,13 +4,16 @@
     ViewBag.Title = "Areas";
 }
 
-<h2>Areas</h2>
+<div>
+    <h3 style="font-style:oblique; font-weight:bold">Áreas</h3>
+</div>
+
 
 <p>
-    @Html.ActionLink("Nueva Area", "Crear")
+    @Html.ActionLink("Nueva Area", "Crear", null, new { @class = "btn btn-success" })
 </p>
-<table class="table">
-    <tr>
+<table class="table table-hover table-responsive table-info">
+    <tr class="success">
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
@@ -29,8 +32,7 @@
             @Html.DisplayFor(modelItem => item.Disponible)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
-            @Html.ActionLink("Detalle", "Detalle", new { id=item.Id })
+            @Html.ActionLink("Editar", "Editar", new { id=item.Id }, new {@class = "btn btn-danger" })
         </td>
     </tr>
 }
