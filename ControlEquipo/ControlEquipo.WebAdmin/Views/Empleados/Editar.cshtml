@@ -4,8 +4,7 @@
     ViewBag.Title = "Editar";
 }
 
-<h2>Editar Empleado</h2>
-
+<h3 style="font-style:oblique; font-weight:bold">Editar empleado</h3>
 
 @using (Html.BeginForm())
 {
@@ -83,7 +82,7 @@
 }
 
 <div>
-    @Html.ActionLink("Regresar", "Index", "Empleados", new { nombre = "" }, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Regresar", "Index", "Empleados", new { nombre = "" }, new { @class = "btn btn-warning" })
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

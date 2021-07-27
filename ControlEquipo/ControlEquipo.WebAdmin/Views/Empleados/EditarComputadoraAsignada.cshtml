@@ -4,14 +4,13 @@
     ViewBag.Title = "EditarComputadoraAsignada";
 }
 
-<h2>EditarComputadoraAsignada</h2>
+<h3 style="font-style:oblique; font-weight:bold">Editar computadora</h3>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Computadora</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -158,12 +157,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Regresar", "ComputadorasAsignadas", "Empleados", new { empleadoId = Model.EmpleadoId }, null)
+    @Html.ActionLink("Regresar", "ComputadorasAsignadas", "Empleados", new { empleadoId = Model.EmpleadoId }, new { @class = "btn btn-warning" })
 </div>

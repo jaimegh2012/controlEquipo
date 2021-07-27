@@ -4,13 +4,13 @@
     ViewBag.Title = "AccesoriosAsignados";
 }
 
-<h2>AccesoriosAsignados</h2>
+<h3 style="font-style:oblique; font-weight:bold">Accesorios asignados</h3>
 
 <p>
-    @Html.ActionLink("Nuevo Accesorio", "Crear", "Accesorios", new {computadoraId = @ViewBag.ComputadoraId, empleadoId = ViewBag.empleadoId }, null)
+    @Html.ActionLink("Nuevo Accesorio", "Crear", "Accesorios", new { computadoraId = @ViewBag.ComputadoraId, empleadoId = ViewBag.empleadoId }, new { @class = "btn btn-success" })
 </p>
-<table class="table">
-    <tr>
+<table class="table table-hover table-responsive table-info">
+    <tr class="success">
         <th>
             @Html.DisplayNameFor(model => model.TipoAccesorioId)
         </th>
@@ -23,49 +23,46 @@
         <th>
             @Html.DisplayNameFor(model => model.Serie)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Observaciones)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Disponible)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoAccesorio.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Marca.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Computadora.Hostname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Serie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observaciones)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Disponible)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "EditarAccesorioAsignado", new { id=item.Id }) |
-            @Html.ActionLink("Detalle", "DetalleAccesorioAsignado", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoAccesorio.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Computadora.Hostname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serie)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponible)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EditarAccesorioAsignado", new { id = item.Id }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Detalle", "DetalleAccesorioAsignado", new { id = item.Id }, new { @class = "btn btn-primary" })
+            </td>
+        </tr>
+    }
 
 </table>
 @if (@ViewBag.empleadoId == 0)
 {
-    @Html.ActionLink("Regresar", "Index", "Computadoras", new { disponible = true, tipoComputadoraId = 0 }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Regresar", "Index", "Computadoras", new { disponible = true, tipoComputadoraId = 0 }, new { @class = "btn btn-warning" })
 }
 else
 {
-    @Html.ActionLink("Regresar", "ComputadorasAsignadas", "Empleados", new { empleadoId = @ViewBag.empleadoId }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Regresar", "ComputadorasAsignadas", "Empleados", new { empleadoId = @ViewBag.empleadoId }, new { @class = "btn btn-warning" })
 
 }

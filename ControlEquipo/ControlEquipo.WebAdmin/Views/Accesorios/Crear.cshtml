@@ -4,14 +4,13 @@
     ViewBag.Title = "Crear";
 }
 
-<h2>Crear</h2>
+<h3 style="font-style:oblique; font-weight:bold">Crear accesorio de computadora</h3>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Accesorio</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -66,7 +65,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Crear" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-success" />
             </div>
         </div>
     </div>
@@ -76,10 +75,10 @@
 <div>
     @if (ViewBag.empleadoId == 0) 
     {
-        @Html.ActionLink("Regresar", "AccesoriosAsignados", "Computadoras", new { computadoraId = Model.ComputadoraId, empleadoId = 0 }, null)
+        @Html.ActionLink("Regresar", "AccesoriosAsignados", "Computadoras", new { computadoraId = Model.ComputadoraId, empleadoId = 0 }, new { @class = "btn btn-warning" })
     }
     else
     {
-        @Html.ActionLink("Regresar", "AccesoriosAsignados", "Computadoras", new { computadoraId = Model.ComputadoraId, empleadoId = ViewBag.empleadoId }, null)
+        @Html.ActionLink("Regresar", "AccesoriosAsignados", "Computadoras", new { computadoraId = Model.ComputadoraId, empleadoId = ViewBag.empleadoId }, new { @class = "btn btn-warning" })
     }
 </div>
