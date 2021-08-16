@@ -222,7 +222,7 @@ namespace ControlEquipo.BL
             #region Usuarios
             var usuario1 = new Usuario();
             usuario1.Id = 1;
-            usuario1.Nombre = "Soporte";
+            usuario1.Nombre = "soporte";
             usuario1.Correo = "soporteit";
             usuario1.Password = "An@v32020*";
             usuario1.Disponible = true;
