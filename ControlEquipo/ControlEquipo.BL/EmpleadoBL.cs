@@ -19,7 +19,7 @@ namespace ControlEquipo.BL
 
         public List<Empleado> obtenerEmpleados()
         {
-            listaEmpleados = _contexto.Empleados.Include("Oficina").Include("Area").OrderBy(a => a.Nombres).ToList();
+            listaEmpleados = _contexto.Empleados.Include("Empresa").Include("Ciudad").Include("Area").OrderBy(a => a.Nombres).ToList();
             return listaEmpleados;
         }
 
@@ -27,10 +27,10 @@ namespace ControlEquipo.BL
         {
             if (nombre == null)
             {
-                listaEmpleados = _contexto.Empleados.Include("Oficina").Include("Area").OrderBy(a => a.Nombres).ToList();
+                listaEmpleados = _contexto.Empleados.Include("Empresa").Include("Ciudad").Include("Area").OrderBy(a => a.Nombres).ToList();
             }else
             {
-                listaEmpleados = _contexto.Empleados.Include("Oficina").Include("Area").Where(b => b.Nombres.Contains(nombre) || b.Apellidos.Contains(nombre)).OrderBy(a => a.Nombres).ToList();
+                listaEmpleados = _contexto.Empleados.Include("Empresa").Include("Ciudad").Include("Area").Where(b => b.Nombres.Contains(nombre) || b.Apellidos.Contains(nombre)).OrderBy(a => a.Nombres).ToList();
 
             }
 
@@ -40,7 +40,7 @@ namespace ControlEquipo.BL
         
         public Empleado obtenerEmpleado(int id)
         {
-            var empleado = _contexto.Empleados.Include("Area").Include("Oficina").FirstOrDefault(a => a.Id == id);
+            var empleado = _contexto.Empleados.Include("Area").Include("Empresa").Include("Ciudad").FirstOrDefault(a => a.Id == id);
             return empleado;
         }
 
@@ -58,7 +58,8 @@ namespace ControlEquipo.BL
                 empleadoExistente.Correo = empleado.Correo;
                 empleadoExistente.Password = empleado.Password;
                 empleadoExistente.AreaId = empleado.AreaId;
-                empleadoExistente.OficinaId = empleado.OficinaId;
+                empleadoExistente.EmpresaId = empleado.EmpresaId;
+                empleadoExistente.CiudadId = empleado.CiudadId;
                 empleadoExistente.Disponible = empleado.Disponible;
 
             }

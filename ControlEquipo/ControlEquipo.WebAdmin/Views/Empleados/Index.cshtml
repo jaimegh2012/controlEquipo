@@ -37,7 +37,10 @@
             @Html.DisplayNameFor(model => model.Area)
         </th>
         <th class="success table-bordered">
-            @Html.DisplayNameFor(model => model.Oficina)
+            @Html.DisplayNameFor(model => model.Empresa)
+        </th>
+        <th class="success table-bordered">
+            @Html.DisplayNameFor(model => model.Ciudad)
         </th>
         <th class="success table-bordered">
             @Html.DisplayNameFor(model => model.Disponible)
@@ -61,7 +64,10 @@
             @Html.DisplayFor(modelItem => item.Area.Nombre)
         </td>
         <td class="table-bordered">
-            @Html.DisplayFor(modelItem => item.Oficina.Nombre)
+            @Html.DisplayFor(modelItem => item.Empresa.Nombre)
+        </td>
+        <td class="table-bordered">
+            @Html.DisplayFor(modelItem => item.Ciudad.Nombre)
         </td>
         <td class="table-bordered">
             @Html.DisplayFor(modelItem => item.Disponible)

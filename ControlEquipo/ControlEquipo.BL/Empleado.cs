@@ -23,8 +23,10 @@ namespace ControlEquipo.BL
         public string Password { get; set; }
         public int AreaId { get; set; }
         public Area Area { get; set; }
-        public int OficinaId { get; set; }
-        public Oficina Oficina { get; set; }
+        public int EmpresaId { get; set; }
+        public Empresa Empresa { get; set; }
+        public int CiudadId { get; set; }
+        public Ciudad Ciudad { get; set; }
         public bool Disponible { get; set; }
 
     }

@@ -16,7 +16,7 @@ namespace ControlEquipo.BL
             _contexto = new Contexto();
             listaOficinas = new List<Oficina>();
         }
-
+/*
         public List<Oficina> obtenerOficinas()
         {
             listaOficinas = _contexto.Oficinas.Include("Empresa").Include("Ciudad").OrderBy(a => a.Nombre).ToList();
@@ -47,6 +47,8 @@ namespace ControlEquipo.BL
             }
 
             _contexto.SaveChanges();
+
         }
+*/
     }
 }

@@ -24,7 +24,7 @@ namespace ControlEquipo.WebAdmin.Controllers
             listaOficinas = new List<Oficina>();
         }
 
-        // GET: Oficinas
+/*        // GET: Oficinas
         public ActionResult Index()
         {
             listaOficinas = _oficinaBL.obtenerOficinas();
@@ -145,6 +145,6 @@ namespace ControlEquipo.WebAdmin.Controllers
 
             return View(oficina);
         }
-
+*/
     }
 }

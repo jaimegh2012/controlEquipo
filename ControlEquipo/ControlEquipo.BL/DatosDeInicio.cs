@@ -15,7 +15,7 @@ namespace ControlEquipo.BL
             var tipoComputadora1 = new TipoComputadora();
             tipoComputadora1.Id = 1;
             tipoComputadora1.Nombre = "Laptop";
-            
+
             contexto.TipoComputadoras.Add(tipoComputadora1);
 
             base.Seed(contexto);
@@ -53,7 +53,7 @@ namespace ControlEquipo.BL
             #region Areas
             var area1 = new Area();
             area1.Id = 1;
-            area1.Nombre = "RRHH";
+            area1.Nombre = "Gerencia";
 
             contexto.Areas.Add(area1);
 
@@ -61,9 +61,29 @@ namespace ControlEquipo.BL
 
             var area2 = new Area();
             area2.Id = 2;
-            area2.Nombre = "Administracion";
+            area2.Nombre = "RRHH";
 
             contexto.Areas.Add(area2);
+
+            base.Seed(contexto);
+
+            #endregion
+
+            #region Empresas
+            var empresa1 = new Empresa();
+            empresa1.Id = 1;
+            empresa1.Nombre = "Anave";
+
+            contexto.Empresas.Add(empresa1);
+
+            base.Seed(contexto);
+
+
+            var empresa2 = new Empresa();
+            empresa2.Id = 2;
+            empresa2.Nombre = "Honduras Logistic";
+
+            contexto.Empresas.Add(empresa2);
 
             base.Seed(contexto);
 
@@ -78,7 +98,7 @@ namespace ControlEquipo.BL
 
             var cidudad2 = new Ciudad();
             cidudad2.Id = 2;
-            cidudad2.Nombre = "Choloma";
+            cidudad2.Nombre = "Pto Cortes";
 
             contexto.Ciudades.Add(cidudad2);
 
@@ -86,25 +106,7 @@ namespace ControlEquipo.BL
 
             #endregion
 
-            #region Empresas
-            var empresa1 = new Empresa();
-            empresa1.Id = 1;
-            empresa1.Nombre = "Vesta Customs";
-
-            contexto.Empresas.Add(empresa1);
-
-            base.Seed(contexto);
-
-
-            var empresa2 = new Empresa();
-            empresa2.Id = 2;
-            empresa2.Nombre = "Vesta Trading";
-
-            contexto.Empresas.Add(empresa2);
-
-            base.Seed(contexto);
-
-            #endregion
+            
 
             #region Marcas
             var marca1 = new Marca();
@@ -128,7 +130,7 @@ namespace ControlEquipo.BL
             #region Procesadores
             var procesador1 = new Procesador();
             procesador1.Id = 1;
-            procesador1.Nombre = "Core i3";
+            procesador1.Nombre = "Core i5";
 
             contexto.Procesadores.Add(procesador1);
 
@@ -136,7 +138,7 @@ namespace ControlEquipo.BL
 
             var procesador2 = new Procesador();
             procesador2.Id = 2;
-            procesador2.Nombre = "Core i5";
+            procesador2.Nombre = "Core i7";
 
             contexto.Procesadores.Add(procesador2);
 
@@ -166,7 +168,7 @@ namespace ControlEquipo.BL
             #region Oficinas
             var oficina1 = new Oficina();
             oficina1.Id = 1;
-            oficina1.Nombre = "Mega Mall";
+            oficina1.Nombre = "Importaciones";
             oficina1.EmpresaId = 1;
             oficina1.CiudadId = 1;
 
@@ -176,7 +178,7 @@ namespace ControlEquipo.BL
 
             var oficina2 = new Oficina();
             oficina2.Id = 2;
-            oficina2.Nombre = "Vesta Choloma";
+            oficina2.Nombre = "Exportaciones";
             oficina2.EmpresaId = 2;
             oficina2.CiudadId = 2;
 
@@ -187,14 +189,15 @@ namespace ControlEquipo.BL
             #endregion
 
             #region Empleados
-            var empleado1 = new Empleado();
+            /*var empleado1 = new Empleado();
             empleado1.Id = 1;
-            empleado1.Nombres = "Fernando Ruben";
-            empleado1.Apellidos = "Torres Pineda";
-            empleado1.Correo = "ftorres@grupovesta.net";
+            empleado1.Nombres = "Esther";
+            empleado1.Apellidos = "Aguirre";
+            empleado1.Correo = "micorreo@anave.hn";
             empleado1.Password = "12345";
             empleado1.AreaId = 2;
-            empleado1.OficinaId = 1;
+            empleado1.EmpresaId = 1;
+            empleado1.CiudadId = 1;
 
             contexto.Empleados.Add(empleado1);
 
@@ -202,26 +205,26 @@ namespace ControlEquipo.BL
 
             var empleado2 = new Empleado();
             empleado2.Id = 2;
-            empleado2.Nombres = "Alberto Francisco";
-            empleado2.Apellidos = "Ulloa Restrepo";
-            empleado2.Correo = "ftorres@grupovesta.net";
+            empleado2.Nombres = "Julio";
+            empleado2.Apellidos = "Maradiaga";
+            empleado2.Correo = "micorreo@anave.com";
             empleado2.Password = "54321";
-            empleado2.AreaId = 1;
-            empleado2.OficinaId = 1;
+            empleado2.EmpresaId = 1;
+            empleado2.CiudadId = 2;
 
             contexto.Empleados.Add(empleado2);
 
             base.Seed(contexto);
-
+            */
 
             #endregion
 
             #region Usuarios
             var usuario1 = new Usuario();
             usuario1.Id = 1;
-            usuario1.Nombre = "JGH";
-            usuario1.Correo = "micorreo@hotmail.com";
-            usuario1.Password = "1234";
+            usuario1.Nombre = "soporte";
+            usuario1.Correo = "soporteit";
+            usuario1.Password = "An@v32020*";
             usuario1.Disponible = true;
 
             usuario1.Password = Encriptar.CodificarContrasena(usuario1.Password);
@@ -230,7 +233,7 @@ namespace ControlEquipo.BL
 
             base.Seed(contexto);
 
-            
+
             #endregion
         }
     }

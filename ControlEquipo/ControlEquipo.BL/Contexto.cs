@@ -19,6 +19,7 @@ namespace ControlEquipo.BL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>(); //deshabilitar la eliminacion en cascada
             Database.SetInitializer(new DatosDeInicio()); // Agregar datos de inicio al momento de crear la base de datos
         }
         public DbSet<Empleado> Empleados { get; set; }

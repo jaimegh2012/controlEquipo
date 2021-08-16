@@ -12,7 +12,8 @@ namespace ControlEquipo.WebAdmin.Controllers
     {
         EmpleadoBL _empleadoBL;
         AreaBL _areaBL;
-        OficinaBL _oficinaBL;
+        EmpresaBL _empresaBL;
+        CiudadBL _ciudadBL;
         ComputadoraBL _computadoraBL;
         MarcaBL _marcaBL;
         ProcesadorBL _procesadorBL;
@@ -28,7 +29,8 @@ namespace ControlEquipo.WebAdmin.Controllers
         {
             _empleadoBL = new EmpleadoBL();
             _areaBL = new AreaBL();
-            _oficinaBL = new OficinaBL();
+            _empresaBL = new EmpresaBL();
+            _ciudadBL = new CiudadBL();
             _marcaBL = new MarcaBL();
             _procesadorBL = new ProcesadorBL();
             _tipoMemoriaBL = new TipoMemoriaBL();
@@ -150,10 +152,12 @@ namespace ControlEquipo.WebAdmin.Controllers
         {
             var nuevoEmpleado = new Empleado();
             var areas = _areaBL.obtenerAreas();
-            var oficinas = _oficinaBL.obtenerOficinas();
+            var empresas = _empresaBL.obtenerEmpresas();
+            var ciudades = _ciudadBL.obtenerCiudades();
 
             ViewBag.AreaId = new SelectList(areas, "Id", "Nombre");
-            ViewBag.OficinaId = new SelectList(oficinas, "Id", "Nombre");
+            ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre");
+            ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre");
 
             return View(nuevoEmpleado);
         }
@@ -162,7 +166,8 @@ namespace ControlEquipo.WebAdmin.Controllers
         public ActionResult Crear(Empleado empleado)
         {
             var areas = _areaBL.obtenerAreas();
-            var oficinas = _oficinaBL.obtenerOficinas();
+            var empresas = _empresaBL.obtenerEmpresas();
+            var ciudades = _ciudadBL.obtenerCiudades();
 
             if (ModelState.IsValid)
             {
@@ -171,7 +176,8 @@ namespace ControlEquipo.WebAdmin.Controllers
                     ModelState.AddModelError("Nombres", "No debe haber espacios al inicio ni al final");
 
                     ViewBag.AreaId = new SelectList(areas, "Id", "Nombre");
-                    ViewBag.OficinaId = new SelectList(oficinas, "Id", "Nombre");
+                    ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre");
+                    ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre");
 
                     return View(empleado);
                 }
@@ -181,7 +187,8 @@ namespace ControlEquipo.WebAdmin.Controllers
                     ModelState.AddModelError("Apellidos", "No debe haber espacios al inicio ni al final");
 
                     ViewBag.AreaId = new SelectList(areas, "Id", "Nombre");
-                    ViewBag.OficinaId = new SelectList(oficinas, "Id", "Nombre");
+                    ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre");
+                    ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre");
 
                     return View(empleado);
                 }
@@ -191,7 +198,8 @@ namespace ControlEquipo.WebAdmin.Controllers
             }
 
             ViewBag.AreaId = new SelectList(areas, "Id", "Nombre");
-            ViewBag.OficinaId = new SelectList(oficinas, "Id", "Nombre");
+            ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre");
+            ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre");
 
             return View(empleado);
         }
@@ -200,10 +208,12 @@ namespace ControlEquipo.WebAdmin.Controllers
         {
             var empleado = _empleadoBL.obtenerEmpleado(id);
             var areas = _areaBL.obtenerAreas();
-            var oficinas = _oficinaBL.obtenerOficinas();
+            var empresas = _empresaBL.obtenerEmpresas();
+            var ciudades = _ciudadBL.obtenerCiudades();
 
             ViewBag.AreaId = new SelectList(areas, "Id", "Nombre", empleado.AreaId);
-            ViewBag.OficinaId = new SelectList(oficinas, "Id", "Nombre", empleado.OficinaId);
+            ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre", empleado.EmpresaId);
+            ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre", empleado.CiudadId);
 
             return View(empleado);
         }
@@ -212,7 +222,8 @@ namespace ControlEquipo.WebAdmin.Controllers
         public ActionResult Editar(Empleado empleado)
         {
             var areas = _areaBL.obtenerAreas();
-            var oficinas = _oficinaBL.obtenerOficinas();
+            var empresas = _empresaBL.obtenerEmpresas();
+            var ciudades = _ciudadBL.obtenerCiudades();
 
             if (ModelState.IsValid)
             {
@@ -221,7 +232,8 @@ namespace ControlEquipo.WebAdmin.Controllers
                     ModelState.AddModelError("Nombres", "No debe haber espacios al inicio ni al final");
 
                     ViewBag.AreaId = new SelectList(areas, "Id", "Nombre", empleado.AreaId);
-                    ViewBag.OficinaId = new SelectList(oficinas, "Id", "Nombre", empleado.OficinaId);
+                    ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre", empleado.EmpresaId);
+                    ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre", empleado.CiudadId);
 
                     return View(empleado);
                 }
@@ -231,7 +243,8 @@ namespace ControlEquipo.WebAdmin.Controllers
                     ModelState.AddModelError("Apellidos", "No debe haber espacios al inicio ni al final");
 
                     ViewBag.AreaId = new SelectList(areas, "Id", "Nombre", empleado.AreaId);
-                    ViewBag.OficinaId = new SelectList(oficinas, "Id", "Nombre", empleado.OficinaId);
+                    ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre", empleado.EmpresaId);
+                    ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre", empleado.CiudadId);
 
                     return View(empleado);
                 }
@@ -240,7 +253,8 @@ namespace ControlEquipo.WebAdmin.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AreaId = new SelectList(areas, "Id", "Nombre", empleado.AreaId);
-            ViewBag.OficinaId = new SelectList(oficinas, "Id", "Nombre", empleado.OficinaId);
+            ViewBag.EmpresaId = new SelectList(empresas, "Id", "Nombre", empleado.EmpresaId);
+            ViewBag.CiudadId = new SelectList(ciudades, "Id", "Nombre", empleado.CiudadId);
 
             return View(empleado);
         }
