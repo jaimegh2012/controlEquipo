@@ -19,7 +19,9 @@ namespace ControlEquipo.BL
 
         public List<Empleado> obtenerEmpleados()
         {
-            listaEmpleados = _contexto.Empleados.Include("Empresa").Include("Ciudad").Include("Area").OrderBy(a => a.Nombres).ToList();
+            listaEmpleados = _contexto.Empleados.Include("Empresa").Include("Ciudad").Include("Area")
+                .OrderBy(a => a.Nombres).ToList()
+                .Select(x => { x.NombreCompleto = x.Nombres + " " + x.Apellidos; return x; }).ToList(); //select se utiliza para concatenar los nombres con los apellidos del empleado y agregarlo en la propiedad NombreCompleto 
             return listaEmpleados;
         }
 
@@ -27,10 +29,10 @@ namespace ControlEquipo.BL
         {
             if (nombre == null)
             {
-                listaEmpleados = _contexto.Empleados.Include("Empresa").Include("Ciudad").Include("Area").OrderBy(a => a.Nombres).ToList();
+                listaEmpleados = _contexto.Empleados.Include("Empresa").Include("Ciudad").Include("Area").OrderBy(a => a.Nombres).ToList().Select(x => { x.NombreCompleto = x.Nombres + " " + x.Apellidos; return x; }).ToList();
             }else
             {
-                listaEmpleados = _contexto.Empleados.Include("Empresa").Include("Ciudad").Include("Area").Where(b => b.Nombres.Contains(nombre) || b.Apellidos.Contains(nombre)).OrderBy(a => a.Nombres).ToList();
+                listaEmpleados = _contexto.Empleados.Include("Empresa").Include("Ciudad").Include("Area").Where(b => b.Nombres.Contains(nombre) || b.Apellidos.Contains(nombre)).OrderBy(a => a.Nombres).ToList().Select(x => { x.NombreCompleto = x.Nombres + " " + x.Apellidos; return x; }).ToList();
 
             }
 

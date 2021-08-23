@@ -74,7 +74,7 @@ namespace ControlEquipo.WebAdmin.Controllers
             ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre", computadora.TipoMemoriaId);
             ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);
             ViewBag.TipoDiscoId = new SelectList(tipoDiscos, "Id", "Nombre", computadora.TipoDiscoId);
-            ViewBag.EmpleadoId = new SelectList(empleados, "Id", "Nombres", computadora.EmpleadoId);
+            ViewBag.EmpleadoId = new SelectList(empleados, "Id", "NombreCompleto", computadora.EmpleadoId);
             return View(computadora);
         }
 
@@ -121,7 +121,7 @@ namespace ControlEquipo.WebAdmin.Controllers
                     ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre", computadora.TipoMemoriaId);
                     ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);
                     ViewBag.TipoDiscoId = new SelectList(tipoDiscos, "Id", "Nombre", computadora.TipoDiscoId);
-                    ViewBag.EmpleadoId = new SelectList(empleados, "Id", "Nombres", computadora.EmpleadoId);
+                    ViewBag.EmpleadoId = new SelectList(empleados, "Id", "NombreCompleto", computadora.EmpleadoId);
 
                     return View(computadora);
                 }
@@ -136,7 +136,7 @@ namespace ControlEquipo.WebAdmin.Controllers
             ViewBag.TipoMemoriaId = new SelectList(tiposMemorias, "Id", "Nombre", computadora.TipoMemoriaId);
             ViewBag.TipoComputadoraId = new SelectList(tipoComputadoras, "Id", "Nombre", computadora.TipoComputadoraId);
             ViewBag.TipoDiscoId = new SelectList(tipoDiscos, "Id", "Nombre", computadora.TipoDiscoId);
-            ViewBag.EmpleadoId = new SelectList(empleados, "Id", "Nombres", computadora.EmpleadoId);
+            ViewBag.EmpleadoId = new SelectList(empleados, "Id", "NombreCompleto", computadora.EmpleadoId);
 
             return View(computadora);
         }

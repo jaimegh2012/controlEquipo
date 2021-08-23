@@ -29,5 +29,8 @@ namespace ControlEquipo.BL
         public Ciudad Ciudad { get; set; }
         public bool Disponible { get; set; }
 
+        public string NombreCompleto { get; set; }
+       
+
     }
 }
